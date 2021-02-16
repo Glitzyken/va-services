@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Welcome</title>
+  </head>
+  <body>
+    <h1>Basic Form For Testing Purposes</h1>
+
+    <form>
+      <input type="text" id="name" placeholder="Victoria Etuhu" />
+      <input type="email" id="email" placeholder="me@example.com" />
+      <input type="text" name="number" id="number" placeholder="Your number" />
+      <!-- Makeup:
+      <input type="checkbox" name="makeup" id="makeup" value="makeup" />
+      Makeover:
+      <input type="checkbox" name="makeover" id="makeover" value="makeover" /> -->
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      $('form').on('submit', (e) => {
+        e.preventDefault();
+
+        const name = $('#name').val().trim();
+        const email = $('#email').val().trim();
+        const number = $('#number').val().trim();
+        // const makeup = $('#number').val().trim();
+
+        const data = {
+          name,
+          email,
+          number,
+        };
+
+        $.post('/mazinomakeovers', data, function () {
+          console.log('Server received our data.');
+        });
+      });
+    </script>
+  </body>
+</html>

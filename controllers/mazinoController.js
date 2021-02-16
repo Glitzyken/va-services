@@ -1,6 +1,6 @@
 const sendEmail = require('../services/vaMailer');
 
-exports.sendMailToMazino = (req, res) => {
+exports.sendNewBookingMail = (req, res) => {
   console.log('Data:', req.body);
 
   const recipient = 'zinoakpebe@gmail.com';
@@ -19,4 +19,8 @@ exports.sendMailToMazino = (req, res) => {
       });
     }
   });
+};
+
+exports.sendContactUsMail = (req, res) => {
+  res.send('New message!');
 };

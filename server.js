@@ -20,7 +20,7 @@ const port = process.env.PORT || 8080;
 
 // ROUTES
 // clients
-app.use('/mazinomakeovers', mazinoRouter);
+app.use('/mazino', mazinoRouter);
 
 // basic sample view
 app.get('/', (req, res) => {

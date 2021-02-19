@@ -1,18 +1,19 @@
-const sendEmail = require('../services/vaMailer');
+const vaMailer = require('../services/vaMailer');
 
-exports.sendNewBookingMail = (req, res) => {
-  console.log('Data:', req.body);
+exports.createBooking = (req, res) => {
+  // console.log('Data:', req.body);
 
   const recipient = 'zinoakpebe@gmail.com';
   const { email } = req.body;
 
-  sendEmail(email, recipient, (err, data) => {
+  vaMailer.sendBookingMail(email, recipient, (err, data) => {
     if (err) {
       res.status(500).json({
         message: 'Internal Error!',
         data: null,
       });
     } else {
+      // console.log(data.message);
       res.status(201).json({
         message: 'Success.',
         data,

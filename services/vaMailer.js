@@ -13,7 +13,7 @@ const auth = {
 
 const transporter = nodemailer.createTransport(mailGun(auth));
 
-const sendEmail = (sender, recipient, cb) => {
+exports.sendBookingMail = (sender, recipient, cb) => {
   const mailOption = {
     from: sender,
     to: recipient,
@@ -29,5 +29,3 @@ const sendEmail = (sender, recipient, cb) => {
     }
   });
 };
-
-module.exports = sendEmail;

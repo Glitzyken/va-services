@@ -4,7 +4,8 @@
   "description": "Visual Applet Backend Services",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
   },
   "author": "Kenneth Jimmy",
   "license": "ISC",

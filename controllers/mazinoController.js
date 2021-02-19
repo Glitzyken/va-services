@@ -13,7 +13,6 @@ exports.createBooking = (req, res) => {
         data: null,
       });
     } else {
-      // console.log(data.message);
       res.status(201).json({
         message: 'Success.',
         data,
@@ -23,5 +22,26 @@ exports.createBooking = (req, res) => {
 };
 
 exports.sendContactUsMail = (req, res) => {
-  res.send('New message!');
+  const client = 'mazinomakeovers.com';
+  const recipient = 'zinoakpebe@gmail.com';
+  const { name, email, message } = req.body;
+
+  vaMailer.sendContactMail(
+    name,
+    email,
+    client,
+    recipient,
+    message,
+    (err, data) => {
+      if (err) {
+        res.status(500).json({
+          message: 'Internal Error!',
+        });
+      } else {
+        res.status(201).json({
+          message: 'Success.',
+        });
+      }
+    }
+  );
 };

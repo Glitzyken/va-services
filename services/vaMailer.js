@@ -17,8 +17,32 @@ exports.sendBookingMail = (sender, recipient, cb) => {
   const mailOption = {
     from: sender,
     to: recipient,
-    subject: `New Makeup/Makeover Appointment`,
+    subject: 'New Makeup/Makeover Appointment',
     text: 'These are my booking details.',
+  };
+
+  transporter.sendMail(mailOption, (err, data) => {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, data);
+    }
+  });
+};
+
+exports.sendContactMail = (
+  sender,
+  senderEmail,
+  client,
+  recipientEmail,
+  message,
+  cb
+) => {
+  const mailOption = {
+    from: senderEmail,
+    to: recipientEmail,
+    subject: `New Message By ${sender} From ${client}`,
+    text: message,
   };
 
   transporter.sendMail(mailOption, (err, data) => {

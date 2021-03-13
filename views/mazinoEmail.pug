@@ -1,0 +1,81 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Email Template
+    style.
+      body {
+      font-family: Roboto;
+      }
+      
+      td {
+        padding-bottom: .7rem;
+      }
+      
+      .table {
+      background: #050505;
+      color: #d1c9be;
+      width: 20rem;
+      padding: 0.7rem;
+      }
+      
+      .table-th {
+      background: #050505;
+      color: #d1c9be;
+      width: 20rem;
+      }
+      
+      .th {
+      text-align: left;
+      background: #d1c9be;
+      color: #050505;
+      padding: 0.7rem;
+      font-size: 1.3rem;
+      }
+      
+      .call-now {
+      background: #e29f51;
+      color: #050505;
+      padding: 0.7rem;
+      padding-top: 1rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      text-align: center;
+      display: inline-block;
+      }
+      
+      .key {
+      color: #e29f51;
+      margin-right: .3rem;
+      }
+      
+      a {
+      text-decoration: none;
+      }
+
+  body
+    table.table-th
+      th.th #{name}
+    table.table
+      tr
+        td
+          span.key Email:
+          | #{email}
+      tr
+        td
+          span.key Number:
+          | #{number}
+      tr
+        td
+          span.key Date:
+          | #{date}
+      tr
+        td
+          span.key Time:
+          | #{time}
+    a.link(href=`tel:${number}`)
+      table.call-now
+        tr
+          td Call #{name} now

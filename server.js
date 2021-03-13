@@ -9,6 +9,9 @@ dotenv.config({ path: './config.env' });
 
 const app = express();
 
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(cors());
 
 app.use(
@@ -27,7 +30,8 @@ app.use('/mazino', mazinoRouter);
 
 // basic sample view
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
+  // res.sendFile(path.join(__dirname, 'views', 'index.html'));
+  res.status(200).render('mazinoEmail');
 });
 
 app.listen(port, () => log(`App listening on port ${port}...`));

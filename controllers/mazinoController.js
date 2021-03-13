@@ -1,31 +1,46 @@
 const vaMailer = require('../services/vaMailer');
 
-exports.createBooking = (req, res) => {
-  // console.log('Data:', req.body);
-
+exports.sendBookingMail = (req, res) => {
   const recipient = 'zinoakpebe@gmail.com';
-  const { email } = req.body;
+  const { name, email, number, date, time } = req.body;
 
-  vaMailer.sendBookingMail(email, recipient, (err, data) => {
-    if (err) {
-      res.status(500).json({
-        message: 'Internal Error!',
-        data: null,
-      });
-    } else {
-      res.status(201).json({
-        message: 'Success.',
-        data,
-      });
+  // console.log(req);
+
+  // res.status(201).json({
+  //   status: 'ok',
+  //   data: {
+  //     name,
+  //   },
+  // });
+
+  vaMailer.sendBookingMail(
+    name,
+    email,
+    number,
+    date,
+    time,
+    recipient,
+    (err, data) => {
+      if (err) {
+        res.status(500).json({
+          message: 'Internal Error!',
+          data: null,
+        });
+      } else {
+        res.status(201).json({
+          message: 'Success.',
+          data,
+        });
+      }
     }
-  });
+  );
 };
 
 exports.sendContactUsMail = (req, res) => {
   const client = 'mazinomakeovers.com';
   const recipient = 'zinoakpebe@gmail.com';
   const { name, email, message } = req.body;
-
+  s;
   vaMailer.sendContactMail(
     name,
     email,

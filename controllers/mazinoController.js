@@ -4,15 +4,6 @@ exports.sendBookingMail = (req, res) => {
   const recipient = 'zinoakpebe@gmail.com';
   const { name, email, number, date, time } = req.body;
 
-  // console.log(req);
-
-  // res.status(201).json({
-  //   status: 'ok',
-  //   data: {
-  //     name,
-  //   },
-  // });
-
   vaMailer.sendBookingMail(
     name,
     email,
@@ -40,7 +31,7 @@ exports.sendContactUsMail = (req, res) => {
   const client = 'mazinomakeovers.com';
   const recipient = 'zinoakpebe@gmail.com';
   const { name, email, message } = req.body;
-  s;
+
   vaMailer.sendContactMail(
     name,
     email,

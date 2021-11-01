@@ -2,12 +2,21 @@ const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 const mazinoRouter = require('./routes/mazinoRoutes');
+const ipaRouter = require('./routes/ipaRoutes');
 
 dotenv.config({ path: './config.env' });
 
 const app = express();
+
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('DB connection successful!'));
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +36,7 @@ const port = process.env.PORT || 8080;
 // ROUTES
 // clients
 app.use('/mazino', mazinoRouter);
+app.use('/ipa', ipaRouter);
 
 // basic sample view
 app.get('/', (req, res) => {
